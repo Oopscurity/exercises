@@ -13,6 +13,7 @@ npm-debug.log
 !*bundles*/*/*.bemjson.js
 !*bundles*/*/index.html
 !*bundles*/*/index.min.css
+!*bundles*/*/index.min.js
 !*bundles*/.bem/*
 *pages*/*/*.*
 !*pages*/*/*.bemjson.js
