@@ -1,0 +1,79 @@
+/* ../../common.blocks/content/content.styl:begin */
+.content {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+/* ../../common.blocks/content/content.styl:end */
+/* ../../common.blocks/slider/__menu/slider__menu.styl:begin */
+.slider__menu {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  text-align: center;
+}
+/* ../../common.blocks/slider/__menu/slider__menu.styl:end */
+/* ../../common.blocks/slider/__toggle/slider__toggle.styl:begin */
+.slider__toggle {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-transition: opacity 0.5s ease-out;
+          transition: opacity 0.5s ease-out;
+}
+/* ../../common.blocks/slider/__toggle/slider__toggle.styl:end */
+/* ../../common.blocks/slider/__toggle/_selected/slider__toggle_selected.styl:begin */
+.slider__toggle_selected {
+  opacity: 0.5;
+}
+/* ../../common.blocks/slider/__toggle/_selected/slider__toggle_selected.styl:end */
+/* ../../common.blocks/slider/__list/slider__list.styl:begin */
+.slider__list {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  list-style: none;
+  width: 9999px;
+  height: 100%;
+}
+/* ../../common.blocks/slider/__list/slider__list.styl:end */
+/* ../../common.blocks/slider/__item/slider__item.styl:begin */
+.slider__item {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  width: 600px;
+}
+/* ../../common.blocks/slider/__item/slider__item.styl:end */
+/* ../../common.blocks/slider/slider.styl:begin */
+.slider {
+  position: relative;
+  width: 600px;
+  height: 350px;
+  overflow: hidden;
+}
+/* ../../common.blocks/slider/slider.styl:end */

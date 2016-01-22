@@ -1,0 +1,3 @@
+block('slider').elem('menu')(
+	tag()('nav')
+)
