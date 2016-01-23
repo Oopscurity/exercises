@@ -3,16 +3,16 @@
 		mustDeps: { block: 'i-bem', elem: 'dom' }
 	},
 	{
+		tech: 'js',
 		mustDeps: [
-			{ elem: 'menu' },
-			{ elem: 'toggle', mods: { selected: true } }
+			{ tech: 'bemhtml', elem: 'i-bem' },
+			{ tech: 'bemhtml', elems: ['menu', 'toggle'] }
 		]
 	},
 	{
-		tech: 'js',
 		mustDeps: [
-			{ tech: 'bemhtml', block: 'i-bem' },
-			{ tech: 'bemhtml', elem: 'menu' }
+			{ elems: ['menu'] },
+			{ elem: 'toggle', mods: ['selected'] }
 		]
 	}
 ])
