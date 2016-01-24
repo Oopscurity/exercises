@@ -23,6 +23,14 @@ html,
   height: 100%;
 }
 /* ../../common.blocks/content/content.styl:end */
+/* ../../common.blocks/slider/slider.styl:begin */
+.slider {
+  position: relative;
+  width: 600px;
+  height: 350px;
+  overflow: hidden;
+}
+/* ../../common.blocks/slider/slider.styl:end */
 /* ../../common.blocks/slider/__menu/slider__menu.styl:begin */
 .slider__menu {
   position: absolute;
@@ -69,11 +77,3 @@ html,
   height: 100%;
 }
 /* ../../common.blocks/slider/__item/slider__item.styl:end */
-/* ../../common.blocks/slider/slider.styl:begin */
-.slider {
-  position: relative;
-  width: 600px;
-  height: 350px;
-  overflow: hidden;
-}
-/* ../../common.blocks/slider/slider.styl:end */
