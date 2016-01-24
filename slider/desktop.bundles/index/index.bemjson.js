@@ -19,8 +19,37 @@ module.exports = {
 						width: 760,
 						paint: true,
 						duration: 500,
-						slideshow: true,
+						slideshow: false,
 						delay: 2500
+					},
+					content: [
+						{
+							elem: 'list',
+							content: [
+								{},
+								{},
+								{},
+								{},
+								{}
+							].map(function(item) {
+								return [
+									{
+										elem: 'item',
+										content: ''
+									}
+								];
+							})
+						}
+					]
+				},
+				{
+					block: 'slider',
+					js: {
+						width: 300,
+						paint: true,
+						duration: 500,
+						slideshow: true,
+						delay: 1000
 					},
 					content: [
 						{
