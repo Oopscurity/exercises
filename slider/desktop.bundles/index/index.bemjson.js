@@ -19,7 +19,7 @@ module.exports = {
 						width: 760,
 						paint: true,
 						duration: 500,
-						slideshow: false,
+						slideshow: true,
 						delay: 2500
 					},
 					content: [
