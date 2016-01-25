@@ -1,1 +1,32 @@
-block('slider').js()(true)
+block('slider')(
+	js()(true),
+	content()(function() {
+		var items = applyNext();
+
+		return [
+			{
+				elem: 'list',
+				content: items.map(function(item) {
+					return [
+						{
+							elem: 'item'
+						}
+					];
+				})
+			},
+			{
+				elem: 'menu',
+				content: items.map(function() {
+					return [
+						{
+							elem: 'toggle'
+						}
+					];
+				})
+			}
+		]
+	}),
+	elem('list').tag()('ul'),
+	elem('item').tag()('li'),
+	elem('menu').tag()('nav')
+)

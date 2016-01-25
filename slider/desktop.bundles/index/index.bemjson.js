@@ -16,60 +16,46 @@ module.exports = {
 				{
 					block: 'slider',
 					js: {
-						width: 760,
+						width: 320,
 						paint: true,
 						duration: 500,
 						slideshow: true,
 						delay: 2500
 					},
 					content: [
-						{
-							elem: 'list',
-							content: [
-								{},
-								{},
-								{},
-								{},
-								{}
-							].map(function(item) {
-								return [
-									{
-										elem: 'item',
-										content: ''
-									}
-								];
-							})
-						}
-					]
+						{},
+						{},
+						{}
+					].map(function() {
+						return [
+							{
+								elem: 'item'
+							}
+						];
+					})
 				},
 				{
 					block: 'slider',
 					js: {
-						width: 300,
+						width: 760,
 						paint: true,
-						duration: 500,
+						duration: 0,
 						slideshow: true,
 						delay: 1000
 					},
 					content: [
-						{
-							elem: 'list',
-							content: [
-								{},
-								{},
-								{},
-								{},
-								{}
-							].map(function(item) {
-								return [
-									{
-										elem: 'item',
-										content: ''
-									}
-								];
-							})
-						}
-					]
+						{},
+						{},
+						{},
+						{},
+						{}
+					].map(function() {
+						return [
+							{
+								elem: 'item'
+							}
+						];
+					})
 				}
 			]
 		}

@@ -6,16 +6,17 @@ modules.define(
 			onSetMod: {
 				'js': {
 					'inited': function() {
-						this.items = 0;
 						this.current = 0;
 
-						if (this.params.width !== 600) {
+						if (this.params.width != 600) {
 							this.updateWidth();
 						}
+						if (this.params.paint == true) {
+							this.paint();
+						}
 
-						this.count();
-						this.menu();
-						this.slideShow();
+						this.bindTo('toggle', 'click', this._onToggleClick)
+							.slideshow();
 					}
 				}
 			},
@@ -32,14 +33,13 @@ modules.define(
 
 			_onToggleClick: function(e) {
 				var target = $(e.currentTarget);
-				var targetId = target.attr('order');
+				var index = target.index();
 
 				this
 					.delMod(this.elem('toggle'), 'selected')
-					.dropElemCache('toggle')
 					.setMod(target, 'selected')
-					.slide(targetId)
-					.current = targetId;
+					.slide(index)
+					.current = index;
 			},
 
 			updateWidth: function() {
@@ -48,72 +48,41 @@ modules.define(
 				this.domElem.css('width', width);
 				this.elem('item').css('width', width);
 			},
-			count: function() {
+			paint: function() {
 				var items = this.elem('item'),
 					needPaint = this.params.paint;
 
-				this.items = items.length;
-
 				items.each(function(idx) {
 					var item = $(this);
-					item.attr('order', idx);
-
-					if (needPaint) {
-						item.css({
-							backgroundColor: 'rgba(' + ~~(Math.random() * 255) + ', '
-													 + ~~(Math.random() * 255) + ', '
-													 + ~~(Math.random() * 255) + ', '
-													 + Math.random() + ')'
-						})
-					}
+					item.css({
+						backgroundColor: 'rgba(' + ~~(Math.random() * 255) + ', '
+												 + ~~(Math.random() * 255) + ', '
+												 + ~~(Math.random() * 255) + ', '
+												 + Math.random() + ')'
+					})
 				});
 			},
-			menu: function() {
-				BEMDOM.append(
-					this.domElem,
-					BEMHTML.apply({
-						block: 'slider',
-						elem: 'menu'
-					})
-				);
-
-				this.togglify();
-			},
-			togglify: function() {
-				var menu = this.elem('menu'),
-					html = '';
-
-				for (var i = 0; i < this.items; ++i) {
-					html += BEMHTML.apply({
-						block: 'slider',
-						elem: 'toggle',
-						js: true,
-						attrs: { order: i }
-					});
-				}
-
-				BEMDOM.append(menu, html);
-
-				this.bindTo('toggle', 'click', this._onToggleClick);
-			},
-			slide: function(targetId) {
+			slide: function(index) {
 				var list = this.findElem('list');
 
 				list.animate({
-					marginLeft: '-' + targetId * this.params.width + 'px'
+					marginLeft: '-' + index * this.params.width + 'px'
 				}, this.params.duration);
 
 				return this;
 			},
-			slideShow: function() {
+			slideshow: function() {
 				if (!this.params.slideshow)
 					return;
 
-				var __self = this;
-				var toggles = this.elem('toggle');
+				var __self = this,
+					// items -- it's local because it's
+					// unnecessary if slideshow isn't required
+					items = this.elem('item').length,
+					toggles = this.elem('toggle');
 
 				setInterval(function() {
-					if (__self.current === __self.items) {
+					if (__self.current === items) {
 						__self.current = 0;
 					}
 
