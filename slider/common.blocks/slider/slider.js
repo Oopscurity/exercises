@@ -1,7 +1,7 @@
 modules.define(
 	'slider',
-	[ 'i-bem__dom', 'BEMHTML', 'jquery' ],
-	function(provide, BEMDOM, BEMHTML, $) {
+	[ 'i-bem__dom', 'BEMHTML', 'events', 'jquery' ],
+	function(provide, BEMDOM, BEMHTML, events, $) {
 		provide(BEMDOM.decl(this.name, {
 			onSetMod: {
 				'js': {
@@ -16,7 +16,8 @@ modules.define(
 						}
 
 						this.bindTo('toggle', 'click', this._onToggleClick)
-							.slideshow();
+							.findBlockOn('remote').on('click', this._onRemoteClick, this);
+						this.slideshow();
 					}
 				}
 			},
@@ -30,7 +31,9 @@ modules.define(
 					delay: 2000
 				};
 			},
-
+			_onRemoteClick: function() {
+				console.log('Remote has been linked');
+			},
 			_onToggleClick: function(e) {
 				var target = $(e.currentTarget);
 				var index = target.index();
@@ -39,13 +42,19 @@ modules.define(
 					.delMod(this.elem('toggle'), 'selected')
 					.setMod(target, 'selected')
 					.slide(index)
+					.emit('slide')
 					.current = index;
+			},
+			_onSlide: function(e, data) {
+				if (!data) {
+					var toggle = this.elem('toggle').eq(this.current++).trigger('click');
+				}
 			},
 
 			updateWidth: function() {
 				var width = this.params.width;
 
-				this.domElem.css('width', width);
+				this.findElem('main').css('width', width);
 				this.elem('item').css('width', width);
 			},
 			paint: function() {
@@ -81,14 +90,15 @@ modules.define(
 					items = this.elem('item').length,
 					toggles = this.elem('toggle');
 
-				setInterval(function() {
+				(function() {
 					if (__self.current === items) {
 						__self.current = 0;
 					}
 
 					toggles.eq(__self.current).trigger('click');
 					++__self.current;
-				}, __self.params.delay);
+					setTimeout(arguments.callee, __self.params.delay);
+				})()
 			}
 		}));
 	}

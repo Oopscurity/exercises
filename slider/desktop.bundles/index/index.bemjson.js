@@ -16,46 +16,25 @@ module.exports = {
 				{
 					block: 'slider',
 					js: {
-						width: 320,
+						id: 'together',
+						width: 1080,
 						paint: true,
 						duration: 500,
 						slideshow: true,
-						delay: 2500
+						delay: 2000
 					},
 					content: [
 						{},
 						{},
+						{},
+						{},
 						{}
-					].map(function() {
-						return [
-							{
-								elem: 'item'
-							}
-						];
-					})
+					].map(function() { return { elem: 'item'}; })
 				},
 				{
 					block: 'slider',
-					js: {
-						width: 760,
-						paint: true,
-						duration: 0,
-						slideshow: true,
-						delay: 1000
-					},
-					content: [
-						{},
-						{},
-						{},
-						{},
-						{}
-					].map(function() {
-						return [
-							{
-								elem: 'item'
-							}
-						];
-					})
+					js: { id: 'together'},
+					mix: { block: 'remote' }
 				}
 			]
 		}
