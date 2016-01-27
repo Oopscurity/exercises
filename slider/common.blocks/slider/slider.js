@@ -22,9 +22,25 @@ modules.define(
 						}
 
 						this.bindTo('toggle', 'click', this._onToggleClick)
-							.bindTo('main', 'mouseover', this._onMainMouseover)
-							.bindTo('main', 'mouseout', this._onMainMouseout)
+							.bindTo('main', 'mouseover', function() {
+								this.setMod('hovered');
+							})
+							.bindTo('main', 'mouseout', function() {
+								this.delMod('hovered');
+							})
 							.findBlockOn('remote').on('click', this._onRemoteClick, this);
+					}
+				},
+				'hovered': {
+					true: function() {
+						if (this.params.slideshow) {
+							this.pause = true;
+						}
+					},
+					'' : function() {
+						if (this.params.slideshow) {
+							this.pause = false;
+						}
 					}
 				}
 			},
@@ -37,18 +53,6 @@ modules.define(
 					slideshow: false,
 					delay: 2000
 				};
-			},
-			_onMainMouseover: function() {
-				if (!this.params.slideshow) {
-					return;
-				}
-				this.pause = true;
-			},
-			_onMainMouseout: function() {
-				if (!this.params.slideshow) {
-					return;
-				}
-				this.pause = false;
 			},
 			_onRemoteClick: function(e, data) {
 				if (!data) {
@@ -108,7 +112,7 @@ modules.define(
 				return this;
 			},
 			to: function(target) {
-				// !! to add checking 
+				// !!! to add checking 
 
 				var toggles = this.elem('toggle');
 
@@ -132,7 +136,12 @@ modules.define(
 			next: function() {
 				var next;
 
-				if (this.current === this.elem('toggle').length - 1) {
+				/// !!!
+				// === sometimes doesn't toggle slides when
+				// 1. slideshow is active
+				// 2. the last is current
+				// use >= solves this problem
+				if (this.current >= this.elem('toggle').length - 1) {
 					this.current = 0;
 					next = this.current;
 				} else {
@@ -154,7 +163,7 @@ modules.define(
 				this.to(prev);
 			},
 			slideshow: function() {
-				if (!this.params.slideshow) // probably unnecessary checking
+				if (!this.params.slideshow) // ! probably unnecessary checking
 					return;
 
 				var _this = this,
