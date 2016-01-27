@@ -22,13 +22,10 @@ modules.define(
 						}
 
 						this.bindTo('toggle', 'click', this._onToggleClick)
-							.bindTo('main', 'mouseover', function() {
-								this.setMod('hovered');
-							})
-							.bindTo('main', 'mouseout', function() {
-								this.delMod('hovered');
-							})
+							.bindTo('main', 'mouseover', function() { this.setMod('hovered'); })
+							.bindTo('main', 'mouseout', function() { this.delMod('hovered'); })
 							.findBlockOn('remote').on('click', this._onRemoteClick, this);
+						this.to('begin');
 					}
 				},
 				'hovered': {
@@ -74,7 +71,6 @@ modules.define(
 					.delMod(this.elem('toggle'), 'selected')
 					.setMod(target, 'selected')
 					.slide(index)
-					.emit('slide')
 					.current = index;
 			},
 			_onSlide: function(e, data) {
@@ -136,12 +132,7 @@ modules.define(
 			next: function() {
 				var next;
 
-				/// !!!
-				// === sometimes doesn't toggle slides when
-				// 1. slideshow is active
-				// 2. the last is current
-				// use >= solves this problem
-				if (this.current >= this.elem('toggle').length - 1) {
+				if (this.current === this.elem('toggle').length - 1) {
 					this.current = 0;
 					next = this.current;
 				} else {
@@ -172,16 +163,9 @@ modules.define(
 					items = this.elem('item').length,
 					toggles = this.elem('toggle');
 
-				// setInterval() instead of self-executed setTimeout()
-				// -- to give time to look at the 1st slide
 				setInterval(function() {
 					if (!_this.pause) {
-						if (_this.current === items) {
-							_this.current = 0;
-						}
-
-						toggles.eq(_this.current).trigger('click');
-						++_this.current;
+						_this.next();
 					}
 				}, this.params.delay)
 			}
