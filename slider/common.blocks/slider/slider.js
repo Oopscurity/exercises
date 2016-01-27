@@ -7,8 +7,9 @@ modules.define(
 				'js': {
 					'inited': function() {
 						this.current = 0;
+						this.width = parseInt(this.domElem.css('width'));
 
-						if (this.params.width != 600) {
+						if (this.width != 600) {
 							this.updateWidth();
 						}
 						if (this.params.paint) {
@@ -44,7 +45,6 @@ modules.define(
 
 			getDefaultParams: function() {
 				return {
-					width: 600,
 					duration: 500,
 					paint: true,
 					slideshow: false,
@@ -80,7 +80,7 @@ modules.define(
 			},
 
 			updateWidth: function() {
-				var width = this.params.width;
+				var width = this.width;
 
 				this.findElem('main').css('width', width);
 				this.elem('item').css('width', width);
@@ -102,7 +102,7 @@ modules.define(
 				var list = this.findElem('list');
 
 				list.animate({
-					marginLeft: '-' + index * this.params.width + 'px'
+					marginLeft: '-' + index * this.width + 'px'
 				}, this.params.duration);
 
 				return this;

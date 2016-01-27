@@ -17,7 +17,6 @@ module.exports = {
 					block: 'slider',
 					js: {
 						id: 'together',
-						width: 1080,
 						paint: true,
 						duration: 500,
 						slideshow: true,
