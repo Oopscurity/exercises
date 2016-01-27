@@ -12,8 +12,7 @@ modules.define(
 			},
 
 			_onClick: function() {
-				this.emit('click');
-				console.log('Click on remote')
+				this.emit('click', { to: 'next' });
 			}
 		}));
 	}
