@@ -23,7 +23,7 @@ html,
   height: 100%;
 }
 /* ../../common.blocks/content/content.styl:end */
-/* ../../common.blocks/slider/slider.styl:begin */
+/* ../../library.blocks/slider/slider.styl:begin */
 .slider {
   position: relative;
   display: inline-block;
@@ -31,13 +31,19 @@ html,
   height: 350px;
   overflow: hidden;
 }
+/* ../../library.blocks/slider/slider.styl:end */
+/* ../../common.blocks/slider/slider.styl:begin */
+.slider {
+  width: 960px;
+  border-radius: 50% 0;
+}
 /* ../../common.blocks/slider/slider.styl:end */
-/* ../../common.blocks/slider/__main/slider__main.styl:begin */
+/* ../../library.blocks/slider/__main/slider__main.styl:begin */
 .slider__main {
   height: 100%;
 }
-/* ../../common.blocks/slider/__main/slider__main.styl:end */
-/* ../../common.blocks/slider/__list/slider__list.styl:begin */
+/* ../../library.blocks/slider/__main/slider__main.styl:end */
+/* ../../library.blocks/slider/__list/slider__list.styl:begin */
 .slider__list {
   margin: 0;
   padding: 0;
@@ -46,16 +52,16 @@ html,
   width: 9999px;
   height: 100%;
 }
-/* ../../common.blocks/slider/__list/slider__list.styl:end */
-/* ../../common.blocks/slider/__item/slider__item.styl:begin */
+/* ../../library.blocks/slider/__list/slider__list.styl:end */
+/* ../../library.blocks/slider/__item/slider__item.styl:begin */
 .slider__item {
   display: inline-block;
   vertical-align: top;
   width: 600px;
   height: 100%;
 }
-/* ../../common.blocks/slider/__item/slider__item.styl:end */
-/* ../../common.blocks/slider/__menu/slider__menu.styl:begin */
+/* ../../library.blocks/slider/__item/slider__item.styl:end */
+/* ../../library.blocks/slider/__menu/slider__menu.styl:begin */
 .slider__menu {
   position: absolute;
   bottom: 10px;
@@ -63,8 +69,8 @@ html,
   right: 0;
   text-align: center;
 }
-/* ../../common.blocks/slider/__menu/slider__menu.styl:end */
-/* ../../common.blocks/slider/__toggle/slider__toggle.styl:begin */
+/* ../../library.blocks/slider/__menu/slider__menu.styl:end */
+/* ../../library.blocks/slider/__toggle/slider__toggle.styl:begin */
 .slider__toggle {
   margin-right: 15px;
   display: inline-block;
@@ -77,13 +83,13 @@ html,
   -webkit-transition: opacity 0.5s ease-out;
           transition: opacity 0.5s ease-out;
 }
-/* ../../common.blocks/slider/__toggle/slider__toggle.styl:end */
-/* ../../common.blocks/slider/__toggle/_selected/slider__toggle_selected.styl:begin */
+/* ../../library.blocks/slider/__toggle/slider__toggle.styl:end */
+/* ../../library.blocks/slider/__toggle/_selected/slider__toggle_selected.styl:begin */
 .slider__toggle_selected {
   opacity: 0.3;
 }
-/* ../../common.blocks/slider/__toggle/_selected/slider__toggle_selected.styl:end */
-/* ../../common.blocks/remote/remote.styl:begin */
+/* ../../library.blocks/slider/__toggle/_selected/slider__toggle_selected.styl:end */
+/* ../../library.blocks/remote/remote.styl:begin */
 .remote {
   position: absolute;
   top: 10px;
@@ -95,4 +101,4 @@ html,
   border-radius: 50%;
   background-color: #90ee90;
 }
-/* ../../common.blocks/remote/remote.styl:end */
+/* ../../library.blocks/remote/remote.styl:end */
