@@ -35,6 +35,11 @@ module.exports = {
 					block: 'slider',
 					js: { id: 'together'},
 					mix: { block: 'remote' }
+				},
+				{
+					block: 'slider',
+					js: { id: 'together' },
+					mix: { block: 'display', js: true }
 				}
 			]
 		}

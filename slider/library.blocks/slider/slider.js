@@ -76,6 +76,7 @@ modules.define(
 					.delMod(this.elem('toggle'), 'selected')
 					.setMod(target, 'selected')
 					.slide(index)
+					.emit('slide', { to: index + 1 })
 					.current = index;
 			},
 			_onSlide: function(e, data) {
