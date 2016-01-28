@@ -17,6 +17,7 @@ module.exports = {
 					block: 'slider',
 					js: {
 						id: 'together',
+						orientation: 'vertical',
 						paint: true,
 						duration: 500,
 						slideshow: true,
