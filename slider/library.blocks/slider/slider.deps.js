@@ -11,7 +11,11 @@
 	},
 	{
 		shouldDeps: [
-			{ elems: [ 'main', 'list', 'item', 'menu', { elem: 'toggle', mods: { selected: true } }] }
+			{ elems: [
+				'main', 'list', 'item', 'menu',
+				{ elem: 'toggle', mods: { selected: true } },
+				{ elem: 'control', mods: { type: ['prev', 'next'] } }
+			] }
 		]
 	}
 ])

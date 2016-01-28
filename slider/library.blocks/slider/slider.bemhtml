@@ -28,6 +28,14 @@ block('slider')(
 								}
 							];
 						})
+					},
+					{
+						elem: 'control',
+						elemMods: { type: 'prev' }
+					},
+					{
+						elem: 'control',
+						elemMods: { type: 'next' }
 					}
 				]
 			}
