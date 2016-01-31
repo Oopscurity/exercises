@@ -1,0 +1,15 @@
+block('page').content()(function() {
+	return [].concat(applyNext(), {
+		block: 'lightbox'
+	});
+});
+
+block('lightbox')(
+	js()(true),
+	content()(function() {
+		return {
+			block: 'modal',
+			mods: { autoclosable: true, theme: 'islands' }
+		};
+	})
+);

@@ -1,0 +1,13 @@
+block('gallery').elem('image').def()(
+	function() {
+		applyCtx({
+			block: 'image',
+			mix: { block: 'gallery', elem: 'image' },
+			js: true,
+			url: this.ctx.url,
+			title: this.ctx.title,
+			alt: this.ctx.alt,
+			content: this.ctx.content
+		})
+	}
+)
