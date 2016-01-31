@@ -75,6 +75,11 @@ html,
   text-align: center;
 }
 /* ../../library.blocks/slider/__menu/slider__menu.styl:end */
+/* ../../common.blocks/slider/__menu/slider__menu.styl:begin */
+.slider__menu {
+  display: none;
+}
+/* ../../common.blocks/slider/__menu/slider__menu.styl:end */
 /* ../../library.blocks/slider/__toggle/slider__toggle.styl:begin */
 .slider__toggle {
   margin-right: 15px;
