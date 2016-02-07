@@ -1,12 +1,17 @@
 module.exports = {
 	block : 'page',
 	title : 'Scroll',
+	favicon: '',
 	head : [
 		{ elem : 'meta', attrs : { name : 'description', content : '' } },
 		{ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } },
 		{ elem : 'css', url : 'index.min.css' }
 	],
-	scripts: [{ elem : 'js', url : 'index.min.js' }],
+	scripts: [
+		{ elem: 'js', url: 'https://yastatic.net/jquery/2.1.4/jquery.min.js' },
+		{ elem: 'js', url: 'index.min.js' },
+		//{ elem: 'js', url: '/assets/jquery-ui/jquery-ui.min.js' }
+	],
 	content : [
 		{
 			block: 'content',
@@ -14,6 +19,7 @@ module.exports = {
 				{
 					block: 'link',
 					mods: { animated: true },
+					js: { duration: 1000, easing: 'easeInOutQuint' },
 					url: '#element',
 					content: 'Tap to scroll to #element'
 				},

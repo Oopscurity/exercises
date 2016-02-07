@@ -1,14 +1,13 @@
 modules.define(
 	'link',
-	[ 'jquery' ],
-	function(provide, $, Link) {
+	[ 'jquery', 'jquery__ui' ],
+	function(provide, $, ui, Link) {
 		provide(Link.decl({ modName: 'animated', modVal: true }, {
 			onSetMod: {
 				js: {
 					inited: function() {
 						this.__base();
 
-						
 						this.bindTo('click', this._onClick);
 					}
 				}
@@ -18,6 +17,7 @@ modules.define(
 				// to get params from parent
 				var _base = this.__base();
 				_base.duration = 500;
+				_base.easing = 'easeInOutCubic';
 
 				return _base;
 			},
@@ -33,7 +33,7 @@ modules.define(
 
 				$(node).animate({
 					scrollTop: $(url).offset().top
-				}, this.params.duration);
+				}, this.params.duration, this.params.easing );
 
 				if (!window.location.href.endsWith(url))
 					window.location.href += url;
