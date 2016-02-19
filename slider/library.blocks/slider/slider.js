@@ -4,8 +4,8 @@ modules.define(
 	function(provide, BEMDOM, BEMHTML, events, $) {
 		provide(BEMDOM.decl(this.name, {
 			onSetMod: {
-				'js': {
-					'inited': function() {
+				js: {
+					inited: function() {
 						var params = this.params;
 
 						this.current = 0;
@@ -29,11 +29,10 @@ modules.define(
 							.bindTo((this.findElem('control', 'type', 'next')), 'click', function() { this.next() })
 							.bindTo('main', 'mouseover', function() { this.setMod('hovered'); })
 							.bindTo('main', 'mouseout', function() { this.delMod('hovered'); })
-							.findBlockOn('remote').on('click', this._onRemoteClick, this);
-						this.to('begin');
+							.to('begin');
 					}
 				},
-				'hovered': {
+				hovered: {
 					true: function() {
 						if (this.params.slideshow) {
 							this.pause = true;

@@ -99,6 +99,36 @@ html,
   right: 0;
 }
 /* ../../library.blocks/slider/__control/_type/slider__control_type_next.styl:end */
+/* ../../library.blocks/slider/_theme/slider_theme_demo.styl:begin */
+.slider_theme_demo .slider__control {
+  box-shadow: 0 0 5px #bbb;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.5s ease-out;
+          transition: opacity 0.5s ease-out;
+}
+.slider_theme_demo .slider__control:hover {
+  opacity: 0.5;
+}
+.slider_theme_demo .slider__control_type_prev {
+  border-radius: 0 50% 50% 0;
+}
+.slider_theme_demo .slider__control_type_next {
+  border-radius: 50% 0 0 50%;
+}
+.slider_theme_demo .slider__toggle {
+  border-radius: 50%;
+  box-shadow: 0 0 5px #bbb;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.5s ease-out;
+          transition: opacity 0.5s ease-out;
+}
+.slider_theme_demo .slider__toggle:hover {
+  opacity: 0.5;
+}
+.slider_theme_demo .slider__toggle_selected {
+  opacity: 0.3;
+}
+/* ../../library.blocks/slider/_theme/slider_theme_demo.styl:end */
 /* ../../common.blocks/remote/remote.styl:begin */
 .remote {
   position: absolute;
