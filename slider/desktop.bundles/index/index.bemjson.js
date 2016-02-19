@@ -18,6 +18,7 @@ module.exports = {
 					js: {
 						id: 'together',
 						orientation: 'vertical',
+						together: 1,
 						paint: true,
 						duration: 500,
 						slideshow: true,
@@ -28,7 +29,7 @@ module.exports = {
 						{},
 						{},
 						{},
-						{}
+						{},
 					].map(function() { return { elem: 'item'}; })
 				},
 				{

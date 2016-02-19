@@ -11,7 +11,7 @@ modules.define(
 						this.current = 0;
 						this.isVertical = (params.orientation === 'vertical') ? true : false;
 						this.mainSideProperty = this.isVertical ? 'height' : 'width';
-						this.mainSideValue = parseInt(this.domElem.css(this.mainSideProperty));
+						this.mainSideValue = parseInt(this.domElem.css(this.mainSideProperty)) / params.together;
 						this.setSize();
 
 						if (params.paint) {
@@ -51,6 +51,7 @@ modules.define(
 				return {
 					orientation: 'horizontal',
 					duration: 500,
+					together: 1,
 					paint: true,
 					slideshow: false,
 					delay: 2000
@@ -88,8 +89,9 @@ modules.define(
 			setSize: function() {
 				var property = this.mainSideProperty;
 				var value = this.mainSideValue;
+				console.log(this.params.together);
 
-				this.elem('list').css(property, value * this.elem('item').length);
+				this.elem('list').css(property, value * this.params.together * this.elem('item').length);
 				this.elem('item').css(property, value);
 			},
 			updateWidth: function() {
