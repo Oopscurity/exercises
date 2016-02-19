@@ -15,6 +15,7 @@ module.exports = {
 			content: [
 				{
 					block: 'slider',
+					mods: { theme: 'demo' },
 					js: {
 						id: 'together',
 						orientation: 'vertical',
