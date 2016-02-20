@@ -23,6 +23,15 @@ modules.define(
 							// that's why the declaration is here
 							this.slideshow();
 						}
+						if (params.wheel) {
+							if ('onwheel' in document) {
+								this.bindTo('wheel', this._onWheel); // IE9+
+							} else if ('onmousewheel' in document) {
+								this.bindTo('mousewheel', this._onWheel);
+							} else {
+								this.bindTo('MozMousePixelScroll', this._onWheel);
+							}
+						}
 
 						this.bindTo('toggle', 'click', this._onToggleClick)
 							.bindTo((this.findElem('control', 'type', 'prev')), 'click', function() { this.prev() })
@@ -51,10 +60,17 @@ modules.define(
 					orientation: 'horizontal',
 					duration: 500,
 					together: 1,
+					wheel: false,
 					paint: true,
 					slideshow: false,
 					delay: 2000
 				};
+			},
+			_onWheel: function(e) {
+				e = e.originalEvent;
+				var delta = e.deltaY || e.detail || e.wheelDelta;
+				console.log(e);
+				(delta > 0) ? this.next() : this.prev();
 			},
 			_onRemoteClick: function(e, data) {
 				if (!data) {

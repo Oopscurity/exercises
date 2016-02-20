@@ -20,6 +20,7 @@ module.exports = {
 						id: 'together',
 						orientation: 'vertical',
 						together: 1,
+						wheel: true,
 						paint: true,
 						duration: 500,
 						slideshow: true,
