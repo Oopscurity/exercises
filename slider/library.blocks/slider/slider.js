@@ -94,6 +94,8 @@ modules.define(
 				}
 			},
 			_onToggleClick: function(e) {
+				if (this.sliding) return;
+
 				var target = $(e.currentTarget);
 				var index = target.index();
 
@@ -137,8 +139,6 @@ modules.define(
 				});
 			},
 			slide: function(index) {
-				if (this.sliding) return;
-
 				var list = this.findElem('list'),
 					animatedProperty = this.isVertical ? 'marginTop' : 'marginLeft',
 					animatedData = {};
