@@ -23,7 +23,15 @@ modules.define(
 							// that's why the declaration is here
 							this.slideshow();
 						}
-						if (params.wheel) {
+						if (params.wheel == 'page') {
+							if ('onwheel' in document) {
+								this.bindToWin('wheel', this._onWheel); // IE9+
+							} else if ('onmousewheel' in document) {
+								this.bindToWin('mousewheel', this._onWheel);
+							} else {
+								this.bindToWin('MozMousePixelScroll', this._onWheel);
+							}
+						} else if (params.wheel) {
 							if ('onwheel' in document) {
 								this.bindTo('wheel', this._onWheel); // IE9+
 							} else if ('onmousewheel' in document) {
@@ -67,9 +75,10 @@ modules.define(
 				};
 			},
 			_onWheel: function(e) {
+				if (this.sliding) return;
+
 				e = e.originalEvent;
 				var delta = e.deltaY || e.detail || e.wheelDelta;
-				console.log(e);
 				(delta > 0) ? this.next() : this.prev();
 			},
 			_onRemoteClick: function(e, data) {
@@ -128,12 +137,18 @@ modules.define(
 				});
 			},
 			slide: function(index) {
+				if (this.sliding) return;
+
 				var list = this.findElem('list'),
 					animatedProperty = this.isVertical ? 'marginTop' : 'marginLeft',
 					animatedData = {};
 				animatedData[animatedProperty] = '-' + index * this.mainSideValue + 'px';
 
-				list.animate(animatedData, this.params.duration);
+				_this = this;
+				_this.sliding = true;
+				list.animate(animatedData, this.params.duration, function() {
+					_this.sliding = false;
+				});
 				return this;
 			},
 			to: function(target) {
