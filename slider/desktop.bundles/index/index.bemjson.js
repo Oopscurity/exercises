@@ -3,7 +3,7 @@ module.exports = {
 	title : 'Slider',
 	head : [
 		{ elem : 'meta', attrs : { name : 'description', content : '' } },
-		//{ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } },
+		{ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } },
 		{ elem : 'css', url : 'index.min.css' }
 	],
 	scripts: [
@@ -18,12 +18,12 @@ module.exports = {
 					mods: { theme: 'demo' },
 					js: {
 						id: 'together',
-						orientation: 'vertical',
-						together: 1,
+						// orientation: 'vertical',
+						together: 2,
 						wheel: 'page',
 						paint: true,
 						duration: 500,
-						//slideshow: true,
+						// slideshow: true,
 						delay: 2500
 					},
 					content: [

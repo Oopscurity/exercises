@@ -39,7 +39,7 @@ html,
 /* ../../library.blocks/slider/slider.styl:end */
 /* ../../common.blocks/slider/slider.styl:begin */
 .slider {
-  width: 960px;
+  width: 80%;
 }
 /* ../../common.blocks/slider/slider.styl:end */
 /* ../../library.blocks/slider/__main/slider__main.styl:begin */
