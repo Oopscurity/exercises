@@ -13,6 +13,13 @@ modules.define(
 						this.isVertical = (params.orientation === 'vertical') ? true : false;
 						this.mainSideProperty = this.isVertical ? 'height' : 'width';
 						this.mainSideValue = parseInt(this.domElem.css(this.mainSideProperty)) / params.together;
+
+						if (params.responsive && this.isMobile()) {
+							this.hide();
+							this.paint();
+							return;
+						}
+
 						this.setSize();
 
 						if (params.paint) {
@@ -76,7 +83,10 @@ modules.define(
 					paint: false,
 					slideshow: false,
 					resize: true,
-					delay: 2000
+					delay: 2000,
+					responsive: true,
+					minWinWidth: 640,
+					minWinHeight: 320,
 				};
 			},
 			_onResize: function(e) {
@@ -121,6 +131,14 @@ modules.define(
 				}
 			},
 
+			isMobile: function() {
+				var params = this.params,
+					w = window;
+				return (w.innerWidth < params.minWinWidth || w.innerHeight < params.minWinHeight);
+			},
+			hide: function() {
+				this.setMod('hidden');
+			},
 			setSize: function() {
 				var property = this.mainSideProperty;
 				var value = this.mainSideValue;
