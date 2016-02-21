@@ -31,8 +31,8 @@ module.exports = {
 						{},
 						{},
 						{},
-						{},
-					].map(function() { return { elem: 'item'}; })
+						{}
+					].map(function(item) { return item; })
 				},
 				{
 					block: 'slider',

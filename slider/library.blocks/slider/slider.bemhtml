@@ -14,7 +14,8 @@ block('slider')(
 						content: items.map(function(item) {
 							return [
 								{
-									elem: 'item'
+									elem: 'item',
+									content: item
 								}
 							];
 						})

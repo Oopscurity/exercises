@@ -73,7 +73,7 @@ modules.define(
 					duration: 500,
 					together: 1,
 					wheel: false,
-					paint: true,
+					paint: false,
 					slideshow: false,
 					resize: true,
 					delay: 2000
