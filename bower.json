@@ -1,0 +1,14 @@
+{
+  "name": "oopsy",
+  "version": "0.0.1",
+  "description": "Oopsy Blocks Library",
+  "bugs": "https://github.com/oopscurity/oopsy/issues",
+  "ignore": [
+    ".bem/cache",
+    "node_modules",
+    "libs"
+  ],
+  "dependencies": {
+    "bem-components": "2.3.0"
+  }
+}
