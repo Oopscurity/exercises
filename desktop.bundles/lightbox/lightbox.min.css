@@ -1,0 +1,261 @@
+/* ../../libs/bem-components/common.blocks/popup/popup.styl:begin */
+.popup {
+  position: absolute;
+}
+/* ../../libs/bem-components/common.blocks/popup/popup.styl:end */
+/* ../../common.blocks/scroll-top/scroll-top.styl:begin */
+.scroll-top {
+  position: fixed;
+}
+/* ../../common.blocks/scroll-top/scroll-top.styl:end */
+/* ../../desktop.blocks/content/content.styl:begin */
+.content {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+html,
+.page {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+/* ../../desktop.blocks/content/content.styl:end */
+/* ../../desktop.blocks/gallery/__list/gallery__list.styl:begin */
+.gallery__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: space-between;
+      -ms-flex-line-pack: justify;
+          align-content: space-between;
+}
+/* ../../desktop.blocks/gallery/__list/gallery__list.styl:end */
+/* ../../desktop.blocks/gallery/__item/gallery__item.styl:begin */
+.gallery__item {
+  display: inline-block;
+  vertical-align: top;
+  width: 33.3%;
+}
+.gallery__item figure {
+  margin: 0;
+  padding: 0;
+}
+/* ../../desktop.blocks/gallery/__item/gallery__item.styl:end */
+/* ../../libs/bem-components/common.blocks/image/image.styl:begin */
+.image {
+  border: 0;
+}
+/* ../../libs/bem-components/common.blocks/image/image.styl:end */
+/* ../../libs/bem-components/common.blocks/modal/modal.styl:begin */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modal__table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.modal__cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal__content {
+  display: inline-block;
+  text-align: left;
+}
+/* ../../libs/bem-components/common.blocks/modal/modal.styl:end */
+/* ../../common.blocks/modal/modal.styl:begin */
+.modal .image {
+  display: block;
+}
+/* ../../common.blocks/modal/modal.styl:end */
+/* ../../desktop.blocks/gallery/gallery.styl:begin */
+.gallery {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+/* ../../desktop.blocks/gallery/gallery.styl:end */
+/* ../../desktop.blocks/gallery/__image/gallery__image.styl:begin */
+.gallery__image {
+  width: 100%;
+}
+/* ../../desktop.blocks/gallery/__image/gallery__image.styl:end */
+/* ../../desktop.blocks/page/page.styl:begin */
+.page {
+  background-color: #ededed;
+}
+/* ../../desktop.blocks/page/page.styl:end */
+/* ../../libs/bem-components/design/common.blocks/modal/_theme/modal_theme_islands.styl:begin */
+.modal_theme_islands {
+  display: none;
+  visibility: hidden;
+  margin: -9999px 0 0 -9999px;
+  background: rgba(50,50,50,0.2);
+}
+.modal_theme_islands,
+.modal_theme_islands .modal__content {
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+.modal_theme_islands .modal__content {
+  margin: 5px;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
+}
+.modal_theme_islands.modal_js_inited {
+  display: block;
+}
+.modal_theme_islands.modal_has-animation {
+  -webkit-animation-name: modal_theme_islands;
+          animation-name: modal_theme_islands;
+}
+.modal_theme_islands.modal_has-animation .modal__content {
+  -webkit-animation-name: modal_theme_islands__content;
+          animation-name: modal_theme_islands__content;
+}
+.modal_theme_islands.modal_visible {
+  visibility: visible;
+  margin: 0;
+}
+.modal_theme_islands.modal_visible.modal_has-animation {
+  -webkit-animation-name: modal_theme_islands_visible;
+          animation-name: modal_theme_islands_visible;
+}
+.modal_theme_islands.modal_visible.modal_has-animation .modal__content {
+  -webkit-animation-name: modal_theme_islands_visible__content;
+          animation-name: modal_theme_islands_visible__content;
+}
+@-webkit-keyframes modal_theme_islands {
+  0% {
+    visibility: visible;
+    margin: 0;
+    opacity: 1;
+  }
+  99% {
+    margin: 0;
+  }
+  100% {
+    visibility: hidden;
+    margin: -9999px 0 0 -9999px;
+    opacity: 0;
+  }
+}
+@keyframes modal_theme_islands {
+  0% {
+    visibility: visible;
+    margin: 0;
+    opacity: 1;
+  }
+  99% {
+    margin: 0;
+  }
+  100% {
+    visibility: hidden;
+    margin: -9999px 0 0 -9999px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes modal_theme_islands_visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes modal_theme_islands_visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes modal_theme_islands__content {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+}
+@keyframes modal_theme_islands__content {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+}
+@-webkit-keyframes modal_theme_islands_visible__content {
+  0% {
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes modal_theme_islands_visible__content {
+  0% {
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+/* ../../libs/bem-components/design/common.blocks/modal/_theme/modal_theme_islands.styl:end */

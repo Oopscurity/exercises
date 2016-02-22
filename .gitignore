@@ -14,8 +14,9 @@ npm-debug.log
 *bundles*/*/*.*
 
 !*bundles*/*/*.bemjson.js
-!*bundles*/*/index.html
-!*bundles*/*/index.min.css
+!*bundles*/*/*.html
+!*bundles*/*/*.min.js
+!*bundles*/*/*.min.css
 !*bundles*/.bem/*
 *pages*/*/*.*
 !*pages*/*/*.bemjson.js
