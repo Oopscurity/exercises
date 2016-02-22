@@ -1,6 +1,3 @@
 ([
-	{
-		tech: 'js',
-		mustDeps: { block: 'lightbox' }
-	}
+	{ mustDeps: { block: 'lightbox' } }
 ])
