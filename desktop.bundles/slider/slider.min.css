@@ -54,16 +54,21 @@ html,
 /* ../../desktop.blocks/slider/slider.styl:end */
 /* ../../common.blocks/slider/_hidden/slider_hidden.styl:begin */
 .slider_hidden {
+  display: inline-block;
   overflow: visible;
+}
+.slider_hidden .slider__main {
+  display: inline-block;
+}
+.slider_hidden .slider__list {
+  overflow: visible;
+  display: inline-block;
 }
 .slider_hidden .slider__menu {
   display: none;
 }
 .slider_hidden .slider__control {
   display: none;
-}
-.slider_hidden .slider__item {
-  display: block;
 }
 /* ../../common.blocks/slider/_hidden/slider_hidden.styl:end */
 /* ../../common.blocks/slider/__main/slider__main.styl:begin */

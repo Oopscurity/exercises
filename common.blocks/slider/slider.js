@@ -12,52 +12,17 @@ modules.define(
 						this.sliding = false;
 						this.isVertical = (params.orientation === 'vertical') ? true : false;
 						this.mainSideProperty = this.isVertical ? 'height' : 'width';
-						this.mainSideValue = parseInt(this.domElem.css(this.mainSideProperty)) / params.together;
+						this.mainSideValue;
 
-						if (params.responsive && this.isMobile()) {
-							this.hide();
-							this.paint();
-							return;
-						}
-
-						this.setSize();
-
-						if (params.paint) {
-							this.paint();
-						}
-						if (params.slideshow) {
-							this.pause = false;
-							// it's waste if slideshow isn't used
-							// that's why the declaration is here
-							this.slideshow();
-						}
 						if (params.resize) {
 							this.bindToWin('resize', this._onResize);
 						}
-						if (params.wheel == 'page') {
-							if ('onwheel' in document) {
-								this.bindToWin('wheel', this._onWheel); // IE9+
-							} else if ('onmousewheel' in document) {
-								this.bindToWin('mousewheel', this._onWheel);
-							} else {
-								this.bindToWin('MozMousePixelScroll', this._onWheel);
-							}
-						} else if (params.wheel) {
-							if ('onwheel' in document) {
-								this.bindTo('wheel', this._onWheel); // IE9+
-							} else if ('onmousewheel' in document) {
-								this.bindTo('mousewheel', this._onWheel);
-							} else {
-								this.bindTo('MozMousePixelScroll', this._onWheel);
-							}
-						}
 
-						this.bindTo('toggle', 'click', this._onToggleClick)
-							.bindTo((this.findElem('control', 'type', 'prev')), 'click', function() { this.prev() })
-							.bindTo((this.findElem('control', 'type', 'next')), 'click', function() { this.next() })
-							.bindTo('main', 'mouseover', function() { this.setMod('hovered'); })
-							.bindTo('main', 'mouseout', function() { this.delMod('hovered'); })
-							.to('begin');
+						if (params.responsive && this.isMobile()) {
+							this.initMobile();
+						} else
+							this.init();
+							this.setSize();
 					}
 				},
 				hovered: {
@@ -86,11 +51,15 @@ modules.define(
 					delay: 2000,
 					responsive: true,
 					minWinWidth: 640,
-					minWinHeight: 320,
+					minWinHeight: 480,
 				};
 			},
-			_onResize: function(e) {
-				this.mainSideValue = parseInt(this.domElem.css(this.mainSideProperty)) / this.params.together;
+			_onResize: function() {
+				if (this.params.responsive && this.isMobile()) {
+					this.abort();
+				} else if (!this.inited) {
+					this.init();
+				}
 				this.setSize();
 			},
 			_onWheel: function(e) {
@@ -131,25 +100,104 @@ modules.define(
 				}
 			},
 
+			init: function() {
+				if (this.inited) return;
+
+				var params = this.params;
+				this.delMod('hidden');
+				if (params.wheel == 'page') {
+					if ('onwheel' in document) {
+						this.bindToWin('wheel', this._onWheel); // IE9+
+					} else if ('onmousewheel' in document) {
+						this.bindToWin('mousewheel', this._onWheel);
+					} else {
+						this.bindToWin('MozMousePixelScroll', this._onWheel);
+					}
+				} else if (params.wheel) {
+					if ('onwheel' in document) {
+						this.bindTo('wheel', this._onWheel); // IE9+
+					} else if ('onmousewheel' in document) {
+						this.bindTo('mousewheel', this._onWheel);
+					} else {
+						this.bindTo('MozMousePixelScroll', this._onWheel);
+					}
+				}
+
+				if (params.paint && !this.painted) {
+					this.paint();
+				}
+				this.bindTo('toggle', 'click', this._onToggleClick)
+					.bindTo((this.findElem('control', 'type', 'prev')), 'click', function() { this.prev() })
+					.bindTo((this.findElem('control', 'type', 'next')), 'click', function() { this.next() })
+					.bindTo('main', 'mouseover', function() { this.setMod('hovered'); })
+					.bindTo('main', 'mouseout', function() { this.delMod('hovered'); })
+					.to('begin');
+
+				if (params.slideshow) {
+					this.pause = false;
+					this.slideshow();
+				}
+				this.inited = true;
+			},
+			initMobile: function() {
+				if (this.inited) return;
+
+				this.setMod('hidden');
+				if (this.params.paint) {
+					this.paint();
+				}
+				this.setSize();
+			},
+			abort: function() {
+				if (!this.inited) return;
+
+				var params = this.params;
+				if (params.wheel == 'page') {
+					if ('onwheel' in document) {
+						this.unbindFromWin('wheel'); // IE9+
+					} else if ('onmousewheel' in document) {
+						this.unbindFromWin('mousewheel');
+					} else {
+						this.unbindFromWin('MozMousePixelScroll');
+					}
+				} else if (params.wheel) {
+					if ('onwheel' in document) {
+						this.unbindFrom('wheel'); // IE9+
+					} else if ('onmousewheel' in document) {
+						this.unbindFrom('mousewheel');
+					} else {
+						this.unbindFrom('MozMousePixelScroll');
+					}
+				}
+
+				this.to('begin');
+				this.unbindFrom('toggle', 'click')
+					.unbindFrom((this.findElem('control', 'type', 'prev')), 'click')
+					.unbindFrom((this.findElem('control', 'type', 'next')), 'click')
+					.unbindFrom('main', 'mouseover')
+					.unbindFrom('main', 'mouseout')
+					.pause = true;
+
+				this.setMod('hidden')
+					.inited = false;
+			},
 			isMobile: function() {
 				var params = this.params,
 					w = window;
 				return (w.innerWidth < params.minWinWidth || w.innerHeight < params.minWinHeight);
 			},
-			hide: function() {
-				this.setMod('hidden');
-			},
 			setSize: function() {
 				var property = this.mainSideProperty;
-				var value = this.mainSideValue;
+				var value = this.mainSideValue = parseFloat(this.domElem.css(property))/this.params.together;
 
-				this.elem('list').css(property, value * this.params.together * this.elem('item').length);
-				this.elem('item').css(property, value);
-			},
-			updateWidth: function() {
-				var width = this.width;
-
-				this.elem('item').css('width', width);
+				if (this.hasMod('hidden')) {
+					this.elem('list').css(property, '');
+					this.elem('item').css(property, value - 1);
+				} else {
+					this.elem('list').css(property, value * this.params.together * this.elem('item').length);
+					this.elem('item').css(property, value);
+				}
+				return this;
 			},
 			paint: function() {
 				var items = this.elem('item');
@@ -161,8 +209,9 @@ modules.define(
 												 + ~~(Math.random() * 255) + ', '
 												 + ~~(Math.random() * 255) + ', '
 												 + Math.random() + ')'
-					})
+					});
 				});
+				this.painted = true;
 			},
 			slide: function(index) {
 				var list = this.findElem('list'),
@@ -234,6 +283,7 @@ modules.define(
 					toggles = this.elem('toggle');
 
 				setInterval(function() {
+					if (!_this.inited) return;
 					if (!_this.pause) {
 						_this.next();
 					}
