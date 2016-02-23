@@ -187,13 +187,19 @@ modules.define(
 				return (w.innerWidth < params.minWinWidth || w.innerHeight < params.minWinHeight);
 			},
 			setSize: function() {
-				var property = this.mainSideProperty;
-				var value = this.mainSideValue = parseFloat(this.domElem.css(property))/this.params.together;
+				var value, property;
+				this.elem('item').css('width', ''); // !!!
 
 				if (this.hasMod('hidden')) {
+					property = 'width';
+					value = parseFloat(this.domElem.css(property))/this.params.together;
+
 					this.elem('list').css(property, '');
 					this.elem('item').css(property, value - 1);
 				} else {
+					property = this.mainSideProperty;
+					value = this.mainSideValue = parseFloat(this.domElem.css(property))/this.params.together;
+
 					this.elem('list').css(property, value * this.params.together * this.elem('item').length);
 					this.elem('item').css(property, value);
 				}
