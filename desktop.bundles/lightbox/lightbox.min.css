@@ -75,6 +75,11 @@ html,
   padding: 0;
 }
 /* ../../desktop.blocks/gallery/__item/gallery__item.styl:end */
+/* ../../libs/bem-components/common.blocks/image/image.styl:begin */
+.image {
+  border: 0;
+}
+/* ../../libs/bem-components/common.blocks/image/image.styl:end */
 /* ../../libs/bem-components/common.blocks/modal/modal.styl:begin */
 .modal {
   position: fixed;
@@ -113,11 +118,11 @@ html,
   height: 100%;
 }
 /* ../../desktop.blocks/gallery/gallery.styl:end */
-/* ../../libs/bem-components/common.blocks/image/image.styl:begin */
-.image {
-  border: 0;
+/* ../../desktop.blocks/gallery/__image/gallery__image.styl:begin */
+.gallery__image {
+  width: 100%;
 }
-/* ../../libs/bem-components/common.blocks/image/image.styl:end */
+/* ../../desktop.blocks/gallery/__image/gallery__image.styl:end */
 /* ../../desktop.blocks/page/page.styl:begin */
 .page {
   background-color: #ededed;
@@ -254,8 +259,3 @@ html,
   }
 }
 /* ../../libs/bem-components/design/common.blocks/modal/_theme/modal_theme_islands.styl:end */
-/* ../../desktop.blocks/gallery/__image/gallery__image.styl:begin */
-.gallery__image {
-  width: 100%;
-}
-/* ../../desktop.blocks/gallery/__image/gallery__image.styl:end */
