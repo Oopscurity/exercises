@@ -20,9 +20,10 @@ modules.define(
 
                         if (params.responsive && this.isMobile()) {
                             this.initMobile();
-                        } else
+                        } else {
                             this.init();
                             this.setSize();
+                        }
                     }
                 },
                 hovered: {

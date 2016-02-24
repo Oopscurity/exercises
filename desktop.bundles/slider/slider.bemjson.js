@@ -18,7 +18,6 @@ module.exports = {
 					mods: { theme: 'demo' },
 					js: {
 						id: 'together',
-						orientation: 'vertical',
 						together: 2,
 						wheel: 'page',
 						paint: true,
